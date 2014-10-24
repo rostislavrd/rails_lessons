@@ -1,6 +1,4 @@
 class User<ActiveRecord::Base
-	User.create(
-		first_name: 'Hamster',
-		last_name: 'Master'
-		)
+	has_many :posts
+	has_many :comments, through: :posts
 end
