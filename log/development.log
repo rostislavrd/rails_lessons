@@ -130,3 +130,17 @@ Migrating to CreateComments (20141024145610)
   [1m[35m (8.6ms)[0m  commit transaction
   [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1[0m
   [1m[35mComment Load (0.4ms)[0m  SELECT "comments".* FROM "comments" INNER JOIN "posts" ON "comments"."post_id" = "posts"."id" WHERE "posts"."user_id" = ?  [["user_id", 2]]
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35m (4.7ms)[0m  begin transaction
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "posts" ("body", "title", "user_id") VALUES (?, ?, ?)[0m  [["body", "test body"], ["title", "testtitle"], ["user_id", 2]]
+  [1m[35m (46.8ms)[0m  commit transaction
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-31 21:03:36 +0400
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "posts"
+  Rendered posts/index.html.erb (12.2ms)
+Completed 200 OK in 196ms (Views: 67.8ms | ActiveRecord: 1.4ms)
