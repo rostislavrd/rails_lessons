@@ -13,9 +13,9 @@
 </ul>
 
 <ul>
-<%= link_to "create_post", new_post_path %>
-
 <% flash.each do |name, msg| %>
   <%= content_tag :div, msg, class:name %>
 <% end %>
+
+<%= link_to "create_post", new_post_path %>
 </ul>
