@@ -8,9 +8,7 @@
 </head>
 <body>
 
-<% flash.each do |name, msg| %>
-  <%= contetn_tag :div, msg, class:name %>
-<% end %>
+<%= flash[:notice] %>
 <%= yield %>
 
 </body>
