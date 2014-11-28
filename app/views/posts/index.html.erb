@@ -3,29 +3,27 @@
   <% @posts.each do |post| %>
     <li>
       <p>
-        <%= link_to post.title, post_path(post) %> created by <%= post.user.try(:login) %>
+        <%= link_to post.title, post_path(post) %> created by <%= post.user.login %>
       </p>
       <span>
         POST HAS <%= pluralize post.comments.count, 'comment' %>
       </span>
-      <span>
-        <%= link_to 'Edit post', edit_post_path(post) %>
-      </span>
-      <span>
-        <%= link_to 'Delete post', post_path(post), method: :delete, :onclick => "return confirm('Are you sure you want to delete this post?')" %>
-      </span>      
+
+      <% if user_signed_in? %>
+        <span>
+          <%= link_to 'Edit post', edit_post_path(post) %>
+        </span>
+        <span>
+          <%= link_to 'Delete post', post_path(post), method: :delete, :onclick => "return confirm('Are you sure you want to delete this post?')" %>
+        </span>   
+      <% end %>   
     </li>
   <% end %>
 </ul>
 
-<ul>
+<% if user_signed_in? %>
   <p>
     <%= link_to 'Create post', new_post_path %>
-  </p>
+  </p>     
+<% end %> 
 
-  <p>
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, class:name %>
-    <% end %>
-  </p>
-</ul>

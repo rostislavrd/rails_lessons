@@ -1,6 +1,7 @@
-class PostsController < ActionController::Base
+class PostsController < ApplicationController
 
-  before_filter :post, only: [:show, :edit, :update, :destroy]
+  before_action :post, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:show, :create, :destroy, :new]
 
   def index
     @posts = Post.all
@@ -15,7 +16,7 @@ class PostsController < ActionController::Base
 
   def create
     puts params
-    Post.create(post_params)
+    current_user.posts.create(post_params)
     redirect_to posts_path, notice: "Post was successflly created"
   end	
 
