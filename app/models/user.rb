@@ -5,7 +5,8 @@ class User<ActiveRecord::Base
     :recoverable, :rememberable, :trackable, :validatable
   
   has_many :posts
-  has_many :comments, through: :posts
+  #has_many :comments, through: :posts
+  has_many :comments
   validates :login, uniqueness: true
 
   def full_name
