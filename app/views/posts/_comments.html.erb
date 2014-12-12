@@ -1,16 +1,16 @@
-<ul>
-<% commentable.comments.each do |comment| %>
-	<li>
-		<div>
+<ul id="comments">
+  <% commentable.comments.each do |comment| %>
+	  <li>
+		  <div>
 			<%= comment.title %>
 
 			posted by <%= comment.author_name %>
-		</div>
-		<div>
+		  </div>
+		  <div>
 			<%= comment.message %>
-		</div>
-	</li>
-<% end %>
+		  </div>
+	  </li>
+  <% end %>
 </ul>
 
 <%= render 'comments/form', commentable:  commentable %>
